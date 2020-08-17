@@ -20,11 +20,11 @@ api.add_resource(BankList, "/banks", endpoint="banks")
 @blueprint.before_app_first_request
 def register_views():
     apispec.spec.components.schema("UserSchema", schema=UserSchema)
-    # apispec.spec.components.schema("BankSchema", schema=BankSchema)
+    apispec.spec.components.schema("BankSchema", schema=BankSchema)
     apispec.spec.path(view=UserResource, app=current_app)
     apispec.spec.path(view=UserList, app=current_app)
-    # apispec.spec.path(view=BankResource, app=current_app)
-    # apispec.spec.path(view=BankList, app=current_app)
+    apispec.spec.path(view=BankResource, app=current_app)
+    apispec.spec.path(view=BankList, app=current_app)
 
 
 @blueprint.errorhandler(ValidationError)
